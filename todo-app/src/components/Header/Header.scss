@@ -1,0 +1,8 @@
+.header {
+    grid-column: 1/-1;
+    grid-row: 1/2;
+    background-color: #516BEB;
+    display: grid;
+    grid-template-columns: 1fr 10fr 1fr;
+    height: 50px;
+}
