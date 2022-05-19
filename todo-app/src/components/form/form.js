@@ -11,7 +11,7 @@ export default function Form(props) {
         <Card className="#007067">
           <label>
             <p>To Do Item:</p>
-            <input onChange={handleChange} class="bp4-input .modifier" name="assignee" type="text" placeholder="Item Details" dir="auto" />
+            <input onChange={handleChange} class="bp4-input .modifier" name="text" type="text" placeholder="Item Details" dir="auto" />
           </label>
         </Card>
         <Card>
