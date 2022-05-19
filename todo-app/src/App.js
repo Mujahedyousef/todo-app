@@ -2,19 +2,25 @@ import "normalize.css";
 import "@blueprintjs/core/lib/css/blueprint.css";
 import "@blueprintjs/icons/lib/css/blueprint-icons.css";
 
-import './App.css';
-
+// import './App.scss';
+import StateProvider from "./context/settings";
 import React from 'react';
-import Main from "./components/Main/Main";
+
+import ToDo from "./components/todo/todo";
+import Header from "./components/Header/Header";
 
 export default class App extends React.Component {
   render() {
     return (
       <div className="App">
-      <Main/>
+        <Header />
+        <StateProvider>
+          <ToDo />
+        </StateProvider>
       </div>
     );
   }
 }
+
 
 
