@@ -8,7 +8,7 @@ const Pagination = ({ itemsPerPages, totalItems, paginate, currentPage }) => {
     }
     
     return (
-        <nav  style={{ marginLeft:"500px" }}>
+        <nav  style={{ marginLeft:"530px" }}>
             <ul  className='pagination'>
                 <li  onClick={() => currentPage > 1 ? paginate(currentPage - 1) : null} class="page-item"><a  style={{ backgroundColor:"#D3D8DE"}} class="page-link" href="/#">Previous</a></li>
                 {pageNumber.map(number => (

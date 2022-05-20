@@ -6,32 +6,50 @@ import { SettingContext } from '../../context/settings'
 import { v4 as uuid } from "uuid";
 import Insheader from "../Insheader/Insheader";
 import Pagination from "../pagination/pagination";
+// import { stringify } from "uuid";
 const ToDo = () => {
   const data = useContext(SettingContext)
   // console.log("dattaaaaaaaaa",data);
   // const[show,setShow]=useState(false)
-
-
+  let stringifiedData;
+   
   const paginate = pageNumber => data.setCurrentPage(pageNumber);
 
   function addItem(item) {
-    console.log(item);
+    // console.log(item);
     item.id = uuid();
     item.complete = false;
     data.setList([...data.list, item]);
-    // console.log("list", list);
-  }
+  
+     stringifiedData = JSON.stringify([...data.list, item]);
+    localStorage.setItem("list",stringifiedData );
+    // console.log("stringifiedData",stringifiedData);
+    // let getData=localStorage.getItem("list")
+    // let parseData=JSON.parse(getData)
 
+  }
+  function showCompleteToggle() {
+    data.setShowComplete(!data.showComplete);
+    // console.log(states.showComplete);
+  }
+  function itemPerPage(e) {
+    data.setItemPerPages(e.target.value)
+  }
   function deleteItem(id) {
     const items = data.list.filter((item) => item.id !== id);
     data.setList(items);
+    stringifiedData = JSON.stringify(items)
+        localStorage.setItem("list", stringifiedData)
+
   }
 
   function toggleComplete(id) {
     const items = data.list.map((item) => {
       if (item.id === id) {
         item.complete = !item.complete;
-        // show?setShow(item.complete):setShow(!item.complete)
+         stringifiedData = JSON.stringify(data.list)
+        localStorage.setItem("list", stringifiedData)
+
       }
 
       return item;
@@ -39,6 +57,14 @@ const ToDo = () => {
 
     data.setList(items);
   }
+
+  // function saveLocalStorage() {
+  //    stringifiedData = JSON.stringify(data.list)
+  //   localStorage.setItem("list", stringifiedData)
+
+   
+
+  // }
 
 
 
@@ -57,13 +83,14 @@ const ToDo = () => {
         <Insheader incomplete={data.incomplete} />
         <div style={{ display: "flex", width: "70%" }}>
           <div style={{ marginRight: "50px" }} >
-            <Form addItem={addItem} />
+            <Form addItem={addItem} showCompleteToggle={showCompleteToggle}
+              itemPerPage={itemPerPage} showComplete={data.showComplete} />
           </div>
           <div style={{ width: "100%" }} >
             <List
               toggleComplete={toggleComplete}
               list={currentItem}
-
+              showComplete={data.showComplete}
 
               incomplete={data.incomplete}
               deleteItem={deleteItem}
