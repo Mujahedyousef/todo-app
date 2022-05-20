@@ -29,7 +29,7 @@ const ToDo = () => {
 
   function toggleComplete(id) {
     const items = data.list.map((item) => {
-      if (item.id == id) {
+      if (item.id === id) {
         item.complete = !item.complete;
         // show?setShow(item.complete):setShow(!item.complete)
       }
