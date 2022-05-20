@@ -19,3 +19,12 @@ of during creating provider and put inside it all props i want share it with chi
 |----|----|
 |website|[netlify](https://mujahed-abuarqob-asac.netlify.app/)|
 |PR|[PR](https://github.com/Mujahedyousef/todo-app/pull/4)|
+-----
+## Phase_2
+
+> In this phase, we’ll be adding a form editor so that users can save their preferences for the application, allowing them to change some of the default behaviors like:
+
+* Control How many items to display.  
+* Ability to show or hide completed Todo.
+* saved the user's choices in Local Storage. 
+* Each time they will re-visit the page, their choices will still be there and can remove any todo.
