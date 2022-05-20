@@ -17,5 +17,5 @@ of during creating provider and put inside it all props i want share it with chi
 ----
 |Name|Link|
 |----|----|
-|website|[netlify]()|
-|PR|[PR]()|
+|website|[netlify](https://mujahed-abuarqob-asac.netlify.app/)|
+|PR|[PR](https://github.com/Mujahedyousef/todo-app/pull/4)|
