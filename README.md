@@ -28,3 +28,7 @@ of during creating provider and put inside it all props i want share it with chi
 * Ability to show or hide completed Todo.
 * saved the user's choices in Local Storage. 
 * Each time they will re-visit the page, their choices will still be there and can remove any todo.
+|Name|Link|
+|----|----|
+|website|[netlify](https://mujahed-abuarqob-asac.netlify.app/)|
+|PR|[PR](https://github.com/Mujahedyousef/todo-app/pull/5)|
