@@ -16,6 +16,7 @@ export default function StateProvider(props) {
         setIncomplete,
         setCurrentPage,
         setItemPerPages
+    
     }
     return (
         <SettingContext.Provider value={state}>
