@@ -32,3 +32,9 @@ of during creating provider and put inside it all props i want share it with chi
 |----|----|
 |website|[netlify](https://mujahed-abuarqob-asac.netlify.app/)|
 |PR|[PR](https://github.com/Mujahedyousef/todo-app/pull/5)|
+----
+## phase_2
+----
+## phase_3 
+
+we’ll be requiring that users be logged in through a live authentication server, in order to see the to-do items. Additionally, based on their user type, they will be allowed (or denied) to perform actions such as editing or deleting them. All To Do items will be stored in a database, accessed through a deployed API
