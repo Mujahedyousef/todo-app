@@ -1,14 +1,19 @@
 import React, { useEffect } from "react";
+import { When } from 'react-if';
 import List from "../list/list";
 import Form from "../form/form";
 import { useContext } from "react";
+import { LoginContext } from '../../context/auth';
 import { SettingContext } from '../../context/settings'
 import { v4 as uuid } from "uuid";
 import Insheader from "../Insheader/Insheader";
 import Pagination from "../pagination/pagination";
-// import { stringify } from "uuid";
+import Signin from "../signin/signin";
+import Signup from "../signup/signup";
+import Swal from 'sweetalert2';
 const ToDo = () => {
   const data = useContext(SettingContext)
+  const auth=useContext(LoginContext)
   let stringifiedData;
    
   const paginate = pageNumber => data.setCurrentPage(pageNumber);
@@ -18,12 +23,9 @@ const ToDo = () => {
     item.id = uuid();
     item.complete = false;
     data.setList([...data.list, item]);
-  
      stringifiedData = JSON.stringify([...data.list, item]);
     localStorage.setItem("list",stringifiedData );
-    // console.log("stringifiedData",stringifiedData);
-    // let getData=localStorage.getItem("list")
-    // let parseData=JSON.parse(getData)
+    
 
   }
   function showCompleteToggle() {
@@ -34,6 +36,43 @@ const ToDo = () => {
     data.setItemPerPages(e.target.value)
   }
   function deleteItem(id) {
+
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+
+    swalWithBootstrapButtons.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel!',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        swalWithBootstrapButtons.fire(
+          'Deleted!',
+          'Your item has been deleted.',
+          'success'
+        )
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelled',
+          'Your imaginary item is safe :)',
+          'error'
+        )
+      }
+    })
+
+
     const items = data.list.filter((item) => item.id !== id);
     data.setList(items);
     stringifiedData = JSON.stringify(items)
@@ -71,6 +110,7 @@ const ToDo = () => {
   const currentItem = data.list.slice(indexOfFirstItem, indexOfLastItem);
   return (
     <>
+    <When condition={auth.loggedIn}>
       <div style={{ width: "70%", margin: "auto" }}>
         <Insheader incomplete={data.incomplete} />
         <div style={{ display: "flex", width: "70%" }}>
@@ -96,6 +136,11 @@ const ToDo = () => {
       <div >
         <Pagination totalItems={data.list.length} itemsPerPages={data.itemsPerPages} paginate={paginate} currentPage={data.currentPage} />
       </div>
+      </When>
+      <When condition={!auth.loggedIn}>
+      <Signin/>
+      <Signup/>
+      </When>
     </>
   );
 };
