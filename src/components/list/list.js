@@ -1,8 +1,8 @@
 import { Button, Card, Elevation, Icon } from "@blueprintjs/core";
 import React from "react";
-
+import Capability from "../capability/capability";
 export default function List(props) {
-  const { list, toggleComplete, deleteItem,showComplete } = props;
+  const { list, toggleComplete, deleteItem, showComplete } = props;
   let sautesList = [];
   if (showComplete) {
     sautesList = list;
@@ -14,9 +14,9 @@ export default function List(props) {
 
       {sautesList.map((item) => (
         <div key={item.id}>
-          <Card class={"bp4-card .modifier"} style={{  marginBottom: "15px"}} className="card-result" interactive={true} elevation={Elevation.TWO}>
+          <Card class={"bp4-card .modifier"} style={{ marginBottom: "15px" }} className="card-result" interactive={true} elevation={Elevation.TWO}>
 
-            <div class="d-flex justify-content-between" style={{ display: "flex", marginBottom: "15px",width: "auto" }}>
+            <div class="d-flex justify-content-between" style={{ display: "flex", marginBottom: "15px", width: "auto" }}>
 
               <div className="card-buttons" style={{ display: "flex" }} >
 
@@ -37,11 +37,12 @@ export default function List(props) {
 
               </div>
               <div   >
+                <Capability capability="delete" >
+                  <Button style={{ float: "right" }} className="delete" onClick={() => deleteItem(item.id)}>
+                    <Icon icon="cross" size={15} />
+                  </Button>
 
-                <Button style={{ float: "right" }} className="delete" onClick={() => deleteItem(item.id)}>
-                  <Icon icon="cross" size={15} />
-                </Button>
-
+                </Capability>
               </div>
             </div>
 
