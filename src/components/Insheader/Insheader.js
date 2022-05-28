@@ -1,4 +1,6 @@
+import React from "react";
 import { Navbar, Alignment } from "@blueprintjs/core";
+
 export default function Insheader(props) {
     const { incomplete } = props;
     return (

@@ -9,8 +9,6 @@ import Pagination from "../pagination/pagination";
 // import { stringify } from "uuid";
 const ToDo = () => {
   const data = useContext(SettingContext)
-  // console.log("dattaaaaaaaaa",data);
-  // const[show,setShow]=useState(false)
   let stringifiedData;
    
   const paginate = pageNumber => data.setCurrentPage(pageNumber);
@@ -58,13 +56,7 @@ const ToDo = () => {
     data.setList(items);
   }
 
-  // function saveLocalStorage() {
-  //    stringifiedData = JSON.stringify(data.list)
-  //   localStorage.setItem("list", stringifiedData)
-
-   
-
-  // }
+ 
 
 
 
