@@ -78,5 +78,5 @@ we’ll be requiring that users be logged in through a live authentication serve
 ----
 |Name|Link|
 |----|----|
-|[website]|[todo website](https://deploy-preview-7--mujahed-abuarqob-asac.netlify.app/)|
-|[PR]|[PR](https://github.com/Mujahedyousef/todo-app/pull/7)|
+|website|[todo website](https://deploy-preview-7--mujahed-abuarqob-asac.netlify.app/)|
+|PR|[PR](https://github.com/Mujahedyousef/todo-app/pull/7)|
